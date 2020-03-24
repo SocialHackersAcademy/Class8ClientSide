@@ -1,12 +1,14 @@
 import React, { Component } from "react";
 
-class Register extends Component {
+export class Register extends Component {
   render() {
     return (
       <div>
-        <p>This is the Register</p>
+        We not pleading but we telling you, if you want ur NGO to be well
+        recognized well register FULL STOP.
       </div>
     );
   }
 }
+
 export default Register;
