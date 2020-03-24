@@ -1,12 +1,14 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 
-class Login extends Component {
-    render() {
-        return (
-            <div>
-                <p>This is the Login</p>
-            </div>
-        )
-    }
+export class Login extends Component {
+  render() {
+    return (
+      <div>
+        Try to login here only if your have fully register if not don't try it.
+        If you do .... Bullet bom bom.
+      </div>
+    );
+  }
 }
-export default  Login
+
+export default Login;
