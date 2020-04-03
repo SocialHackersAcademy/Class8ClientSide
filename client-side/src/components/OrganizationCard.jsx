@@ -8,8 +8,15 @@ import {
   ListGroupItem
 } from "reactstrap";
 
-export default class OrganizationCard extends Component {
+class OrganizationCard extends Component {
   render() {
+    const {
+      services,
+      address,
+      logo,
+      name,
+      industry
+    } = this.props.ngo;
     return (
       <Card>
         <CardBody>
@@ -17,37 +24,29 @@ export default class OrganizationCard extends Component {
             <Col sm="3">
               <img
                 className="rounded-circle"
-                src="https://www.gravatar.com/avatar/anything?s=200&d=mm"
+                src={logo}
                 alt=""
               />
             </Col>
             <Col sm="4">
-              <h3>Social Hackers</h3>
-              <p>Web Development Bootcamp</p>
-              <p>Athens Greece</p>
-              <a
-                href="profile.html"
-                className="btn btn-primary"
-              >
+              <h3>{name}</h3>
+              <p>{industry}</p>
+              <p>{address}</p>
+              <a href="#" className="btn btn-primary">
                 View Organization
               </a>
             </Col>
             <Col sm="4">
               <h4>Services</h4>
-              <ListGroup>
-                <ListGroupItem>
-                  <i className="fa fa-check pr-1"></i>
-                  Tea
-                </ListGroupItem>
-                <ListGroupItem>
-                  <i className="fa fa-check pr-1"></i>
-                  Tea
-                </ListGroupItem>
-                <ListGroupItem>
-                  <i className="fa fa-check pr-1"></i>
-                  Tea
-                </ListGroupItem>
-              </ListGroup>
+
+              {services.map(service => (
+                <ListGroup>
+                  <ListGroupItem>
+                    <i className="fa fa-check pr-1" />
+                    {service}
+                  </ListGroupItem>
+                </ListGroup>
+              ))}
             </Col>
           </Row>
         </CardBody>
@@ -55,3 +54,4 @@ export default class OrganizationCard extends Component {
     );
   }
 }
+export default OrganizationCard;

@@ -2,8 +2,30 @@ import React, { Component } from "react";
 import OrganizationCard from "../OrganizationCard";
 import { Breadcrumb, BreadcrumbItem } from "reactstrap";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { getAllNgos } from "../../actions/ngoActions";
 export class Listboard extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      organizations: []
+    };
+  }
+
+  componentDidMount() {
+    this.props.getAllNgos();
+  }
+
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    if (nextProps) {
+      this.setState({
+        organizations: nextProps.ngos.organizations
+      });
+    }
+  }
   render() {
+    const { organizations } = this.state;
     return (
       <div className="">
         <Breadcrumb>
@@ -21,11 +43,10 @@ export class Listboard extends Component {
               <p className="lead text-center">
                 Browse and connect with other NGO's
               </p>
-              <OrganizationCard />
-              <OrganizationCard />
-              <OrganizationCard />
-              <OrganizationCard />
-              <OrganizationCard />
+              {organizations &&
+                organizations.map((ngo, i) => (
+                  <OrganizationCard key={i} ngo={ngo} />
+                ))}
             </div>
           </div>
         </div>
@@ -34,4 +55,9 @@ export class Listboard extends Component {
   }
 }
 
-export default Listboard;
+const mapStateToProps = state => ({
+  ngos: state.ngo
+});
+export default connect(mapStateToProps, { getAllNgos })(
+  Listboard
+);
