@@ -1,0 +1,36 @@
+.footer {
+  background-color: #252b5d;
+  color: #fff;
+  margin: 0px auto;
+  padding: 20px 0px 20px 0px;
+}
+.jumbotron {
+  padding: 70px 30px 70px 30px;
+  margin: 0px auto;
+  background: #fff;
+  color: rgb(10, 10, 10);
+}
+
+.navbar-dark {
+  background-color: #512da8;
+}
+.yolonet-submit, .yolonet-submit:hover, yolonet-submit:active, yolonet-submit:clicked
+{
+  background-color:#000;
+}
+.yolonet-submit
+{
+  background-color:#000;
+}
+.yolonet-submit:hover
+{
+  background-color:#000;
+}
+.yolonet-submit:active
+{
+  background-color:#000;
+}
+.yolonet-submit:link
+{
+  background-color:#000;
+}
