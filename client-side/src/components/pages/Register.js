@@ -1,11 +1,11 @@
 import React, { Component } from "react";
+import { NgoForm } from "./multiForm/NgoForm";
 
 export class Register extends Component {
   render() {
     return (
       <div>
-        We not pleading but we telling you, if you want ur NGO to be well
-        recognized well register FULL STOP.
+        <NgoForm />
       </div>
     );
   }
