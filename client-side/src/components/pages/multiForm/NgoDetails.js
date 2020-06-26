@@ -29,11 +29,12 @@ export class FormPersonalDetails extends Component {
                 </Label>
                 <Col sm={10}>
                   <Input
-                    type="file"
+                    type="text"
                     name="image"
                     id="image"
                     onChange={handleChange("image")}
                     defaultValue={values.image}
+                    placeholder="Your image url"
                   />
                 </Col>
               </FormGroup>

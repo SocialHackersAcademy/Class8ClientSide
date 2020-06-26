@@ -29,23 +29,23 @@ export class FormPersonalDetails extends Component {
                   <FormGroup>
                     <Input
                       type="firstname"
-                      name="firstnamem1"
-                      id="firstnamem1"
+                      name="membername1"
+                      id="membername1"
                       placeholder="First Name"
-                      onChange={handleChange("firstnamem1")}
-                      defaultValue={values.firstnamem1}
+                      onChange={handleChange("membername1")}
+                      defaultValue={values.membername1}
                     />
                   </FormGroup>
                 </Col>
                 <Col md={6}>
                   <FormGroup>
                     <Input
-                      type="surnames1"
-                      name="surnames1"
+                      type="title1"
+                      name="title1"
                       id="surname"
                       placeholder="Surname"
-                      onChange={handleChange("surnames1")}
-                      defaultValue={values.surnames1}
+                      onChange={handleChange("title1")}
+                      defaultValue={values.title1}
                     />
                   </FormGroup>
                 </Col>
@@ -56,11 +56,11 @@ export class FormPersonalDetails extends Component {
                   <FormGroup>
                     <Input
                       type="firstname"
-                      name="firstnamem2"
-                      id="firstnamem2"
+                      name="membername2"
+                      id="membername2"
                       placeholder="First Name"
-                      onChange={handleChange("firstnamem2")}
-                      defaultValue={values.firstnamem2}
+                      onChange={handleChange("membername2")}
+                      defaultValue={values.membername2}
                     />
                   </FormGroup>
                 </Col>
@@ -68,11 +68,11 @@ export class FormPersonalDetails extends Component {
                   <FormGroup>
                     <Input
                       type="surname"
-                      name="surnames2"
-                      id="surnames2"
+                      name="title2"
+                      id="title2"
                       placeholder="Surname"
-                      onChange={handleChange("surnames2")}
-                      defaultValue={values.surnames2}
+                      onChange={handleChange("title2")}
+                      defaultValue={values.title2}
                     />
                   </FormGroup>
                 </Col>
@@ -83,11 +83,11 @@ export class FormPersonalDetails extends Component {
                   <FormGroup>
                     <Input
                       type="firstname"
-                      name="firstnamem3"
-                      id="firstnamem3"
+                      name="membername3"
+                      id="membername3"
                       placeholder="First Name"
-                      onChange={handleChange("firstnamem3")}
-                      defaultValue={values.firstnamem3}
+                      onChange={handleChange("membername3")}
+                      defaultValue={values.membername3}
                     />
                   </FormGroup>
                 </Col>
@@ -95,11 +95,11 @@ export class FormPersonalDetails extends Component {
                   <FormGroup>
                     <Input
                       type="surname"
-                      name="surnames3"
-                      id="surnames3"
+                      name="title3"
+                      id="title3"
                       placeholder="Surname"
-                      onChange={handleChange("surnames3")}
-                      defaultValue={values.surnames3}
+                      onChange={handleChange("title3")}
+                      defaultValue={values.title3}
                     />
                   </FormGroup>
                 </Col>

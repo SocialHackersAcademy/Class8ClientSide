@@ -118,22 +118,20 @@ export class FormUserDetails extends Component {
                 </Col>
               </Row>
               <Row className="form-group">
-                <Label htmlFor="confirmPassword" md={2}>
-                  Confirm Password
+                <Label htmlFor="year" md={2}>
+                  Year
                 </Label>
                 <Col md={10}>
                   <Control.text
-                    model=".confirmPassword"
-                    id="confirmPassword"
-                    name="confirmPassword"
-                    placeholder="Confirm Password"
-                    onChange={handleChange("confirmPassword")}
+                    model=".year"
+                    id="year"
+                    name="year"
+                    placeholder="Year"
+                    onChange={handleChange("year")}
                     defaultValue={values.confirmPassword}
                     className="form-control"
                     validators={{
                       required,
-                      minLength: minLength(3),
-                      maxLength: maxLength(15),
                     }}
                   />
                   <Errors
@@ -142,8 +140,6 @@ export class FormUserDetails extends Component {
                     show="touched"
                     messages={{
                       required: "Required ",
-                      minLength: "Must be greater than 2 characters",
-                      maxLength: "Must be 15 characters or less",
                     }}
                   />
                 </Col>

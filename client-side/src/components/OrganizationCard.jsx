@@ -1,32 +1,15 @@
 import React, { Component } from "react";
-import {
-  Card,
-  CardBody,
-  Row,
-  Col,
-  ListGroup,
-  ListGroupItem
-} from "reactstrap";
+import { Card, CardBody, Row, Col, ListGroup, ListGroupItem } from "reactstrap";
 
 class OrganizationCard extends Component {
   render() {
-    const {
-      services,
-      address,
-      logo,
-      name,
-      industry
-    } = this.props.ngo;
+    const { services, address, logo, name, industry } = this.props.ngo;
     return (
       <Card>
         <CardBody>
           <Row>
             <Col sm="3">
-              <img
-                className="rounded-circle"
-                src={logo}
-                alt=""
-              />
+              <img className="" src={logo} style={{ width: "100%" }} alt="" />
             </Col>
             <Col sm="4">
               <h3>{name}</h3>
@@ -39,7 +22,7 @@ class OrganizationCard extends Component {
             <Col sm="4">
               <h4>Services</h4>
 
-              {services.map(service => (
+              {services.map((service) => (
                 <ListGroup>
                   <ListGroupItem>
                     <i className="fa fa-check pr-1" />

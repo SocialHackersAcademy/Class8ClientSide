@@ -1,4 +1,8 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { registerUser } from '../../../actions/authActions';
+
 import {
   Button,
   Row,
@@ -11,8 +15,8 @@ import {
   ModalHeader,
   ModalBody,
   ModalFooter,
-} from "reactstrap";
-import { LocalForm } from "react-redux-form";
+} from 'reactstrap';
+import { LocalForm } from 'react-redux-form';
 
 export class Confirm extends Component {
   constructor(props) {
@@ -24,6 +28,7 @@ export class Confirm extends Component {
     };
     this.toggleNav = this.toggleNav.bind(this);
     this.toggleModal = this.toggleModal.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
   toggleNav() {
     this.setState({
@@ -35,13 +40,65 @@ export class Confirm extends Component {
       isModalOpen: !this.state.isModalOpen,
     });
   }
-
-  continue = (e) => {
+  handleSubmit(e) {
+    console.log(this.props.auth);
     e.preventDefault();
-    // PROCESS FORM //
-    this.props.nextStep();
-  };
+    const {
+      values: {
+        ngoName,
+        email,
+        password,
+        phoneNumber,
+        address,
+        image,
+        industry,
+        description,
+        services,
+        keywords,
+        membername1,
+        title1,
+        membername2,
+        title2,
+        membername3,
+        title3,
+        year,
+      },
+      history,
+      registerUser,
+    } = this.props;
 
+    const myNgoStructure = {
+      logo: image,
+      name: ngoName,
+      email,
+      password,
+      address,
+      phone: phoneNumber,
+      industry,
+      description,
+      year,
+      // Since were supposed to send a comma separated array of values
+      services: services.split(','),
+      keyword: keywords.split(','),
+      teammembers: [
+        {
+          name: membername1,
+          title: title1,
+        },
+        {
+          name: membername2,
+          title: title2,
+        },
+        {
+          name: membername3,
+          title: title3,
+        },
+      ],
+    };
+    // Connect to redux
+    registerUser(myNgoStructure, history);
+    // Send the structure with history
+  }
   back = (e) => {
     e.preventDefault();
     this.props.prevStep();
@@ -52,95 +109,85 @@ export class Confirm extends Component {
       values: { ngoName, email, phoneNumber, address, description, services },
     } = this.props;
     return (
-      <div className="container offset-2">
-        <div className="col-12">
+      <div className='container offset-2'>
+        <div className='col-12'>
           <h3>Confirm Registration</h3>
         </div>
         <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
-          <ModalHeader toggle={this.toggleModal}>CONFIRM MESSAGE</ModalHeader>
+          <ModalHeader toggle={this.toggleModal}>CONFIRM</ModalHeader>
           <ModalBody>
-            <h1>Thanks You For Your Registration</h1>
+            <h1>Thanks for the Registration</h1>
             <p>
               Don't worry we will send you more of your details through your
               email.
             </p>
           </ModalBody>
           <ModalFooter>
-            <Button
-              type="submit"
-              value="submit"
-              color="primary"
-              onClick={this.toggleModal}
-            >
+            <Button type='submit' color='primary' onClick={this.toggleModal}>
               Cancel
             </Button>
           </ModalFooter>
         </Modal>
-        <div className="row">
-          <div className="col-12 col-md-9 mt-5">
+        <div className='row'>
+          <div className='col-12 col-md-9 mt-5'>
             <LocalForm>
-              <Row className="form-group">
-                <Label htmlFor="ngoName" md={2}>
+              <Row className='form-group'>
+                <Label htmlFor='ngoName' md={2}>
                   NGO Name:
                 </Label>
-                <Label htmlFor="ngoName" md={2}>
+                <Label htmlFor='ngoName' md={2}>
                   {ngoName}
                 </Label>
               </Row>
-              <Row className="form-group">
-                <Label htmlFor="email" md={2}>
+              <Row className='form-group'>
+                <Label htmlFor='email' md={2}>
                   Email:
                 </Label>
-                <Label htmlFor="email" md={2}>
+                <Label htmlFor='email' md={2}>
                   {email}
                 </Label>
               </Row>
-              <Row className="form-group">
-                <Label htmlFor="phoneNumber" md={2}>
+              <Row className='form-group'>
+                <Label htmlFor='phoneNumber' md={2}>
                   Phone Number:
                 </Label>
-                <Label htmlFor="phoneNumber" md={2}>
+                <Label htmlFor='phoneNumber' md={2}>
                   {phoneNumber}
                 </Label>
               </Row>
-              <Row className="form-group">
-                <Label htmlFor="address" md={2}>
+              <Row className='form-group'>
+                <Label htmlFor='address' md={2}>
                   Address:
                 </Label>
-                <Label htmlFor="address" md={2}>
+                <Label htmlFor='address' md={2}>
                   {address}
                 </Label>
               </Row>
-              <Row className="form-group">
-                <Label htmlFor="description" md={2}>
+              <Row className='form-group'>
+                <Label htmlFor='description' md={2}>
                   Description:
                 </Label>
-                <Label htmlFor="description" md={2}>
+                <Label htmlFor='description' md={2}>
                   {description}
                 </Label>
               </Row>
-              <Row className="form-group">
-                <Label htmlFor="services" md={2}>
+              <Row className='form-group'>
+                <Label htmlFor='services' md={2}>
                   Services:
                 </Label>
-                <Label htmlFor="services" md={2}>
+                <Label htmlFor='services' md={2}>
                   {services}
                 </Label>
               </Row>
-              <Row className="form-group">
+              <Row className='form-group'>
                 <Col md={{ size: 10, offset: 2 }}>
-                  <Button
-                    type="submit"
-                    color="primary"
-                    onClick={this.back}
-                    block
-                  >
+                  <Button color='primary' onClick={this.back} block>
                     Back
                   </Button>
                   <Button
-                    type="submit"
-                    color="primary"
-                    onClick={this.toggleModal}
+                    color='primary'
+                    type='submit'
+                    onClick={this.handleSubmit}
                     block
                   >
                     Submit
@@ -154,5 +201,7 @@ export class Confirm extends Component {
     );
   }
 }
-
-export default Confirm;
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+});
+export default connect(mapStateToProps, { registerUser })(withRouter(Confirm));
